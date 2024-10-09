@@ -39,7 +39,7 @@ public class WritableTrigon<A, B, C> extends Trigon<A, B, C> {
      * <p>Sets the first third of the {@link Trigon}.</p>
      * @param c the future third element of the trigon.
      */
-    public void setC(C c) {
+    public void setThird(C c) {
         this.c = c;
     }
 
