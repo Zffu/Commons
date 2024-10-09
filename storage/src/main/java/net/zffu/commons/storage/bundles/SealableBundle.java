@@ -31,4 +31,16 @@ public class SealableBundle<K, T> extends WritableBundle<K, T> implements Sealab
     public boolean isSealed() {
         return this.seal;
     }
+
+    @Override
+    public void setFirst(K k) {
+        if(this.seal) throw new IllegalStateException("Bundle is sealed!");
+        super.setFirst(k);
+    }
+
+    @Override
+    public void setSecond(T t) {
+        if(this.seal) throw new IllegalStateException("Bundle is sealed!");
+        super.setSecond(t);
+    }
 }
