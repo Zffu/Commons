@@ -1,3 +1,3 @@
-# Zffu's Commons Library
+# Zffu Commons
 A library for Java commons.
 
