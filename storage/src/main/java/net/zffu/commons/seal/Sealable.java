@@ -2,9 +2,8 @@ package net.zffu.commons.seal;
 
 /**
  * <p>An object that can be sealed to prevent further modifications.</p>
- * @param <K> the target output class.
  */
-public interface Sealable<K extends Sealed> {
+public interface Sealable<K> {
 
     /**
      * <p>Seals the object and internally prevents further modifications.</p>
@@ -16,6 +15,8 @@ public interface Sealable<K extends Sealed> {
      * <p>Returns if the object is sealed or not</p>
      * @return true or false.
      */
-    boolean isSealed();
+    default boolean isSealed() {
+        return false;
+    }
 
 }

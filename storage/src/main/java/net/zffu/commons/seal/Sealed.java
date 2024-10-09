@@ -4,9 +4,9 @@ package net.zffu.commons.seal;
  * <p>An object that is "permanently" sealed.</p>
  * @since 1.0.0
  */
-public interface Sealed extends Sealable{
+public interface Sealed<K extends Sealed> extends Sealable<K> {
 
-    default void seal() {
+    default K seal() {
         throw new IllegalStateException("You cannot seal an already sealed object!");
     }
 
