@@ -8,9 +8,9 @@ package net.zffu.commons.storage.trigons;
  */
 public class Trigon<A, B, C> {
 
-    private A a;
-    private B b;
-    private C c;
+    protected A a;
+    protected B b;
+    protected C c;
 
     /**
      * <p>Creates a new {@link Trigon} with the provided elements.</p>
