@@ -7,9 +7,7 @@ import net.zffu.commons.seal.Sealable;
  * @param <K> the first data type.
  * @param <T> the second data type.
  */
-public class SealableBundle<K, T> extends WritableBundle<K, T> implements Sealable {
-
-    private boolean seal;
+public class SealableBundle<K, T> extends WritableBundle<K, T> implements Sealable<SealedBundle<K, T>> {
 
     /**
      * <p>Creates a new bundle with the new provided elements.</p>
@@ -22,25 +20,8 @@ public class SealableBundle<K, T> extends WritableBundle<K, T> implements Sealab
     }
 
     @Override
-    public void seal() throws IllegalStateException {
-        if(this.seal) throw new IllegalStateException("Bundle is already sealed!");
-        this.seal = true;
+    public SealedBundle<K, T> seal() throws IllegalStateException {
+        return new SealedBundle<>(k, t);
     }
 
-    @Override
-    public boolean isSealed() {
-        return this.seal;
-    }
-
-    @Override
-    public void setFirst(K k) {
-        if(this.seal) throw new IllegalStateException("Bundle is sealed!");
-        super.setFirst(k);
-    }
-
-    @Override
-    public void setSecond(T t) {
-        if(this.seal) throw new IllegalStateException("Bundle is sealed!");
-        super.setSecond(t);
-    }
 }

@@ -8,9 +8,7 @@ import net.zffu.commons.seal.Sealable;
  * @param <B> the second data type.
  * @param <C> the third data type.
  */
-public class SealableTrigon<A, B, C> extends WritableTrigon<A, B, C> implements Sealable {
-
-    private boolean seal;
+public class SealableTrigon<A, B, C> extends WritableTrigon<A, B, C> implements Sealable<SealedTrigon<A, B, C>> {
 
     /**
      * <p>Creates a new {@link Trigon} with the provided elements.</p>
@@ -24,31 +22,7 @@ public class SealableTrigon<A, B, C> extends WritableTrigon<A, B, C> implements 
     }
 
     @Override
-    public void seal() throws IllegalStateException {
-        if(this.seal) throw new IllegalStateException("Trigon is already sealed!");
-        this.seal = true;
-    }
-
-    @Override
-    public void setFirst(A a) {
-        if(this.seal) throw new IllegalStateException("Trigon is sealed!");
-        super.setFirst(a);
-    }
-
-    @Override
-    public void setSecond(B b) {
-        if(this.seal) throw new IllegalStateException("Trigon is sealed!");
-        super.setSecond(b);
-    }
-
-    @Override
-    public void setThird(C c) {
-        if(this.seal) throw new IllegalStateException("Trigon is sealed!");
-        super.setThird(c);
-    }
-
-    @Override
-    public boolean isSealed() {
-        return this.seal;
+    public SealedTrigon<A, B, C> seal() throws IllegalStateException {
+        return new SealedTrigon<>(a, b, c);
     }
 }
